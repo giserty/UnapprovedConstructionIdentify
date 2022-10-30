@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>视频融合</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="这是一个 index 页面">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="icon" type="image/png" href="../../assets/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="../../assets/i/app-icon72x72@2x.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze-Cesium" />
+    <script src="../../assets/js/echarts.min.js"></script>
+    <link rel="stylesheet" href="../../assets/css/amazeui.min.css" />
+    <link rel="stylesheet" href="../../assets/css/amazeui.datatables.min.css" />
+    <link rel="stylesheet" href="../../assets/css/app.css">
+    <script src="../../assets/js/jquery.min.js"></script>
+    <script src="../../assets/vue.min.js"></script>
+    <script src="../../assets/XbsjEarthUI/xbsj.js"></script>
+    <style>
+        .cesium-widget-credits {
+            display: none !important;
+            visibility: hide !important;
+        }
+
+        .defultbtn {
+            display: inline-block;
+            text-align: center;
+            min-width: 60px;
+            height: 38px;
+            padding: 0 10px;
+            line-height: 38px;
+            border-radius: 100px;
+            border: 1px solid #C9C9C9;
+            background-color: #FFF;
+            color: #555;
+            cursor: pointer;
+        }
+
+        .btnon {
+            background-color: #1E9FFF;
+            color: #fff;
+            border: 1px solid #1E9FFF;
+        }
+    </style>
+</head>
+
+<body data-type="widgets">
+    <script src="../../assets/js/theme.js"></script>
+    <div class="am-g tpl-g">
+        <!-- 头部 -->
+        <header>
+            <!-- logo -->
+            <div class="am-fl tpl-header-logo">
+                <a href="javascript:;"><img src="../../assets/img/logo.png" alt=""></a>
+            </div>
+            <!-- 右侧内容 -->
+            <div class="tpl-header-fluid">
+                <!-- 侧边切换 -->
+                <div class="am-fl tpl-header-switch-button am-icon-list">
+                    <span>
+
+                    </span>
+                </div>
+            </div>
+        </header>
+        <!-- 风格切换 -->
+        <div class="tpl-skiner">
+            <div class="tpl-skiner-toggle am-icon-cog">
+            </div>
+            <div class="tpl-skiner-content">
+                <div class="tpl-skiner-content-title">
+                    选择主题
+                </div>
+                <div class="tpl-skiner-content-bar">
+                    <span class="skiner-color skiner-white" data-color="theme-white"></span>
+                    <span class="skiner-color skiner-black" data-color="theme-black"></span>
+                </div>
+            </div>
+        </div>
+        <!-- 侧边导航栏 -->
+        <div class="left-sidebar">
+            <!-- 菜单 -->
+            <ul class="sidebar-nav">
+                <li class="sidebar-nav-link">
+                    <a href="../../index.html" class="active">
+                        <i class="am-icon-home sidebar-nav-link-logo"></i> 首页
+                    </a>
+                </li>
+                <li class="sidebar-nav-link">
+                    <a href="javascript:;" class="sidebar-nav-sub-title active">
+                        <i class="am-icon-cog sidebar-nav-link-logo"></i> 基础功能
+                        <span
+                            class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico sidebar-nav-sub-ico-rotate"></span>
+                    </a>
+                    <ul class="sidebar-nav sidebar-nav-sub" style="display: block;">
+                        <li class="sidebar-nav-link">
+                            <a href="../base/measure.html">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 量测
+                            </a>
+                        </li>
+
+                        <li class="sidebar-nav-link">
+                            <a href="../base/roam.html">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 导航漫游
+                            </a>
+                        </li>
+
+                        <li class="sidebar-nav-link">
+                            <a href="../base/mv.html" class="sub-active">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 视频融合
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="sidebar-nav-link">
+                    <a href="javascript:;" class="sidebar-nav-sub-title">
+                        <i class="am-icon-list sidebar-nav-link-logo"></i> 违建识别
+                        <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+                    </a>
+                    <ul class="sidebar-nav sidebar-nav-sub">
+                        <li class="sidebar-nav-link">
+                            <a href="../core/inquiry.html">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 单体化查询
+                            </a>
+                        </li>
+
+                        <li class="sidebar-nav-link">
+                            <a href="../core/identify.html">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 违建查询
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="sidebar-nav-link">
+                    <a href="javascript:;" class="sidebar-nav-sub-title">
+                        <i class="am-icon-table sidebar-nav-link-logo"></i> 数据统计
+                        <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+                    </a>
+                    <ul class="sidebar-nav sidebar-nav-sub">
+                        <li class="sidebar-nav-link">
+                            <a href="../data/table.html">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 违建信息
+                            </a>
+                        </li>
+
+                        <li class="sidebar-nav-link">
+                            <a href="../data/echarts.html">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 园区统计
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+
+
+        <!-- 内容区域 -->
+        <div class="tpl-content-wrapper">
+            <div id="main">
+            </div>
+        </div>
+        <script>
+            XbsjEarthUI.create('main').then(earthUI => {
+                //隐藏主工具栏
+                earthUI.controls.mainBar.show = false;
+                //隐藏图层管理
+                earthUI.tools.sceneTree.show = false;
+                earthUI.earth.sceneTree.root = {
+                    "expand": true,
+                    "title": "项目",
+                    "children": [{
+                        "expand": true,
+                        "title": "项目",
+                        "children": [
+                            {
+                                "czmObject": {
+                                    "xbsjType": "Tileset",
+                                    "name": "三维瓦片1x",
+                                    "url": "http://172.30.60.101/b3dm/BGY/tileset.json",
+                                    "skipLevelOfDetail": false
+                                },
+                                "enabled": true
+                            },
+                            {
+                                "czmObject": {
+                                    "xbsjType": "CameraVideo",
+                                    "name": "视频融合",
+                                    "videoUrl": "../../assets/XbsjEarthUI/assets/demo.mp4",
+                                    "position": [
+                                        Cesium.Math.toRadians(113.079227),
+                                        Cesium.Math.toRadians(28.270823),
+                                        28
+                                    ],
+                                    "rotation": [
+                                        -0.517413323656963833,
+                                        -0.733639537288121,
+                                        0.0003900191769634631
+                                    ],
+                                    "far": 20
+                                },
+                                "enabled": true
+                            }
+                        ]
+                    }]
+                };
+
+                earthUI.earth.cameraViewManager = {
+                    "lastView": {
+                        "position": [
+                            Cesium.Math.toRadians(113.079307),
+                            Cesium.Math.toRadians(28.270850),
+                            50
+                        ],
+                        "rotation": [
+                        5.288347633542818,
+                        -1.145634121009078,
+                            6.281345779298704
+                        ],
+                        "fov": 1.0471975511965976,
+                        "near": 0.1,
+                        "far": 10000000000
+                    }
+                }
+
+                window.uia = earthUI;
+            });
+        </script>
+    </div>
+
+
+
+    </div>
+    <script src="../../assets/js/amazeui.min.js"></script>
+    <script src="../../assets/js/amazeui.datatables.min.js"></script>
+    <script src="../../assets/js/dataTables.responsive.min.js"></script>
+    <script src="../../assets/js/app.js"></script>
+</body>
+
+</html>

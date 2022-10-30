@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>第一人称漫游</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="这是一个 index 页面">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="icon" type="image/png" href="../../assets/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="../../assets/i/app-icon72x72@2x.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze-Cesium" />
+    <script src="../../assets/js/echarts.min.js"></script>
+    <link rel="stylesheet" href="../../assets/css/amazeui.min.css" />
+    <link rel="stylesheet" href="../../assets/css/amazeui.datatables.min.css" />
+    <link rel="stylesheet" href="../../assets/css/app.css">
+    <script src="../../assets/js/jquery.min.js"></script>
+    <script src="../../assets/vue.min.js"></script>
+    <link rel="stylesheet" href="../../assets/XbsjCesium/Widgets/widgets.css">
+    <script src="../../assets/XbsjEarth/XbsjEarth.js"></script>
+    <script src="../../assets/XbsjCesium/Cesium.js"></script>
+
+    <style>
+        .defultbtn {
+            display: inline-block;
+            text-align: center;
+            min-width: 60px;
+            height: 38px;
+            padding: 0 10px;
+            line-height: 38px;
+            border-radius: 100px;
+            border: 1px solid #C9C9C9;
+            background-color: #FFF;
+            color: #555;
+            cursor: pointer;
+        }
+
+        .btnon {
+            background-color: #1E9FFF;
+            color: #fff;
+            border: 1px solid #1E9FFF;
+        }
+    </style>
+</head>
+
+<body data-type="widgets">
+    <script src="../../assets/js/theme.js"></script>
+    <div class="am-g tpl-g">
+        <!-- 头部 -->
+        <header>
+            <!-- logo -->
+            <div class="am-fl tpl-header-logo">
+                <a href="javascript:;"><img src="../../assets/img/logo.png" alt=""></a>
+            </div>
+            <!-- 右侧内容 -->
+            <div class="tpl-header-fluid">
+                <!-- 侧边切换 -->
+                <div class="am-fl tpl-header-switch-button am-icon-list">
+                    <span>
+
+                    </span>
+                </div>
+            </div>
+        </header>
+        <!-- 风格切换 -->
+        <div class="tpl-skiner">
+            <div class="tpl-skiner-toggle am-icon-cog">
+            </div>
+            <div class="tpl-skiner-content">
+                <div class="tpl-skiner-content-title">
+                    选择主题
+                </div>
+                <div class="tpl-skiner-content-bar">
+                    <span class="skiner-color skiner-white" data-color="theme-white"></span>
+                    <span class="skiner-color skiner-black" data-color="theme-black"></span>
+                </div>
+            </div>
+        </div>
+        <!-- 侧边导航栏 -->
+        <div class="left-sidebar">
+            <!-- 菜单 -->
+            <ul class="sidebar-nav">
+                <li class="sidebar-nav-link">
+                    <a href="../../index.html" class="active">
+                        <i class="am-icon-home sidebar-nav-link-logo"></i> 首页
+                    </a>
+                </li>
+                <li class="sidebar-nav-link">
+                    <a href="javascript:;" class="sidebar-nav-sub-title active">
+                        <i class="am-icon-cog sidebar-nav-link-logo"></i> 基础功能
+                        <span
+                            class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico sidebar-nav-sub-ico-rotate"></span>
+                    </a>
+                    <ul class="sidebar-nav sidebar-nav-sub" style="display: block;">
+                        <li class="sidebar-nav-link">
+                            <a href="../base/measure.html">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 量测
+                            </a>
+                        </li>
+
+                        <li class="sidebar-nav-link">
+                            <a href="../base/roam.html" class="sub-active">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 导航漫游
+                            </a>
+                        </li>
+
+                        <li class="sidebar-nav-link">
+                            <a href="../base/mv.html">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 视频融合
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="sidebar-nav-link">
+                    <a href="javascript:;" class="sidebar-nav-sub-title">
+                        <i class="am-icon-list sidebar-nav-link-logo"></i> 违建识别
+                        <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+                    </a>
+                    <ul class="sidebar-nav sidebar-nav-sub">
+                        <li class="sidebar-nav-link">
+                            <a href="../core/inquiry.html">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 单体化查询
+                            </a>
+                        </li>
+
+                        <li class="sidebar-nav-link">
+                            <a href="../core/identify.html">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 违建查询
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="sidebar-nav-link">
+                    <a href="javascript:;" class="sidebar-nav-sub-title">
+                        <i class="am-icon-table sidebar-nav-link-logo"></i> 数据统计
+                        <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+                    </a>
+                    <ul class="sidebar-nav sidebar-nav-sub">
+                        <li class="sidebar-nav-link">
+                            <a href="../data/table.html">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 违建信息
+                            </a>
+                        </li>
+
+                        <li class="sidebar-nav-link">
+                            <a href="../data/echarts.html">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 园区统计
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+
+
+        <!-- 内容区域 -->
+        <div class="tpl-content-wrapper">
+            <div id="vueApp" style="width: 100%; height: 100%; background: grey; position: relative;">
+                <earth-comp></earth-comp>
+            </div>
+        </div>
+
+        <script>
+            // 1 创建Earth的vue组件
+            var EarthComp = {
+                template: `
+                <div style="width: 100%; height: 100%">
+                    <div ref="earthContainer" style="width: 100%; height: 100%">
+                    </div>
+                    <div class="box" style="position: absolute; left: 18px; top: 18px; color: white; background: rgba(0, 0, 0, 0.6); padding: 20px; border-radius: 25px;min-width:200px; font-size:24px; font-family: 宋体;">
+                        <div class="defultbtn" @click="ghostMode = !ghostMode">浸入模式</div>
+                        <div class="defultbtn" :class="{'btnon':enabled}" @click="enabled = !enabled">键盘漫游</div>
+                        <div class="defultbtn" @click="keynoteHelpShow = !keynoteHelpShow">按键说明</div><br/>
+                        <div v-show="keynoteHelpShow" style="margin-top:10px">
+                            <table border="1" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <th colspan="2">键盘按键说明</th>
+                                </tr>
+                                <tr v-for="(value,index) in shortcutkeys" :key="index">
+                                    <td>{{value.key}}</td>
+                                    <td>{{value.value}}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            `,
+                data() {
+                    return {
+                        _earth: undefined, // 注意：Earth和Cesium的相关变量放在vue中，必须使用下划线作为前缀！
+                        ghostMode: false, // 控制浸入模式的开启与关闭，默认为关闭
+                        enabled: true, // 控制键盘漫游的开启与关闭，默认为开启
+                        keynoteHelpShow: false,
+                        shortcutkeys: [
+                            {
+                                key: "W(↑)",
+                                value: "水平方向前进"
+                            },
+                            {
+                                key: "A(←)",
+                                value: "水平方向左移"
+                            },
+                            {
+                                key: "S(↓)",
+                                value: "水平方向后退"
+                            },
+                            {
+                                key: "D(→)",
+                                value: "水平方向右移"
+                            },
+                            {
+                                key: "SHIFT + W(↑)",
+                                value: "视线方向前进"
+                            },
+                            {
+                                key: "SHIFT + S(↓)",
+                                value: "视线方向后退"
+                            },
+                            {
+                                key: "Q",
+                                value: "向左旋转"
+                            },
+                            {
+                                key: "E",
+                                value: "向右旋转"
+                            },
+                            {
+                                key: "R",
+                                value: "视点抬高"
+                            },
+                            {
+                                key: "F",
+                                value: "视点降低"
+                            },
+                            {
+                                key: "1",
+                                value: "减速（默认速度的基础上*0.8）"
+                            },
+                            {
+                                key: "2",
+                                value: "恢复默认速度"
+                            },
+                            {
+                                key: "3",
+                                value: "提速（默认速度的基础上*1.2）"
+                            },
+                            {
+                                key: "4",
+                                value: "切换 固定速度模式/自动速度模式",
+                            }
+                        ]
+                    };
+                },
+                // 1.1 资源创建
+                mounted() {
+                    // 1.1.1 创建地球
+                    var earth = new XE.Earth(this.$refs.earthContainer);
+
+                    // 1.1.2 场景配置
+                    earth.sceneTree.root = {
+                        "expand": true,
+                        "title": "预览场景",
+                        "children": [{
+                            "ref": 'tileset',
+                            "czmObject": {
+                                "name": '碧桂园',
+                                "xbsjType": "Tileset",
+                                "url": 'http://172.30.60.101/b3dm/BGY/tileset.json',
+                                "xbsjUseOriginTransform": false,
+                                "skipLevelOfDetail": false
+                            },
+                        }, {
+                            "czmObject": {
+                                "name": '默认影像',
+                                "xbsjType": "Imagery",
+                                "xbsjImageryProvider": XE.Obj.Imagery.defaultImageryProviderConfig,
+                            },
+                        }]
+                    };
+
+                    var tileset = earth.sceneTree.$refs.tileset.czmObject;
+
+                    earth.camera.flyTo(
+                        [Cesium.Math.toRadians(113.0804355), Cesium.Math.toRadians(28.2647861), 500],
+                        0,
+                        [6.199601447728825, -0.4750524418332556, 6.281821351893175],
+                        
+                    )
+
+                    // 1.1.3 数据绑定
+                    // 双向绑定的属性，如果一方发生变化，另一方同样会跟随变化
+                    this._ghostModeUnbind = XE.MVVM.bind(this, 'ghostMode', earth.camera.immersion, 'ghostMode');
+                    this._enabledUnbind = XE.MVVM.bind(this, 'enabled', earth.camera.immersion, 'enabled');
+
+                    this._earth = earth;
+
+                    // only for Debug
+                    window.tileset = tileset;
+                    window.earth = earth;
+                },
+                filters: {
+                    numFilter(value) {
+                        // 截取当前数据到小数点后两位
+                        let realVal = parseFloat(value).toFixed(2)
+                        return realVal
+                    }
+                },
+                // 1.2 资源销毁
+                beforeDestroy() {
+                    // vue程序销毁时，需要清理相关资源
+                    this._ghostModeUnbind = this._ghostModeUnbind && this._ghostModeUnbind();
+                    this._enabledUnbind = this._enabledUnbind && this._enabledUnbind();
+                    this._earth = this._earth && this._earth.destroy();
+                },
+            }
+
+            // 2 创建vue程序
+            // XE.ready()用来加载Cesium.js等相关资源
+            XE.ready().then(() => {
+                var app = new Vue({
+                    el: '#vueApp',
+                    components: {
+                        EarthComp,
+                    },
+                });
+            });
+        </script>
+    </div>
+    </div>
+
+
+
+    </div>
+    <script src="../../assets/js/amazeui.min.js"></script>
+    <script src="../../assets/js/amazeui.datatables.min.js"></script>
+    <script src="../../assets/js/dataTables.responsive.min.js"></script>
+    <script src="../../assets/js/app.js"></script>
+</body>
+
+</html>

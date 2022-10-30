@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>单体化查询</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="这是一个 index 页面">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="icon" type="image/png" href="../../assets/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="../../assets/i/app-icon72x72@2x.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze-Cesium" />
+    <script src="../../assets/js/echarts.min.js"></script>
+    <link rel="stylesheet" href="../../assets/css/amazeui.min.css" />
+    <link rel="stylesheet" href="../../assets/css/amazeui.datatables.min.css" />
+    <link rel="stylesheet" href="../../assets/css/app.css">
+    <script src="../../assets/js/jquery.min.js"></script>
+    <script src="../../assets/vue.min.js"></script>
+    <link rel="stylesheet" href="../../assets/XbsjCesium/Widgets/widgets.css">
+    <script src="../../assets/XbsjEarth/XbsjEarth.js"></script>
+    <script src="../../assets/XbsjCesium/Cesium.js"></script>
+    <style>
+        .cesium-widget-credits {
+            display: none !important;
+            visibility: hide !important;
+        }
+    </style>
+</head>
+
+<body data-type="widgets">
+    <script src="../../assets/js/theme.js"></script>
+    <div class="am-g tpl-g">
+        <!-- 头部 -->
+        <header>
+            <!-- logo -->
+            <div class="am-fl tpl-header-logo">
+                <a href="javascript:;"><img src="../../assets/img/logo.png" alt=""></a>
+            </div>
+            <!-- 右侧内容 -->
+            <div class="tpl-header-fluid">
+                <!-- 侧边切换 -->
+                <div class="am-fl tpl-header-switch-button am-icon-list">
+                    <span>
+
+                    </span>
+                </div>
+            </div>
+        </header>
+        <!-- 风格切换 -->
+        <div class="tpl-skiner">
+            <div class="tpl-skiner-toggle am-icon-cog">
+            </div>
+            <div class="tpl-skiner-content">
+                <div class="tpl-skiner-content-title">
+                    选择主题
+                </div>
+                <div class="tpl-skiner-content-bar">
+                    <span class="skiner-color skiner-white" data-color="theme-white"></span>
+                    <span class="skiner-color skiner-black" data-color="theme-black"></span>
+                </div>
+            </div>
+        </div>
+        <!-- 侧边导航栏 -->
+        <div class="left-sidebar">
+            <!-- 菜单 -->
+            <ul class="sidebar-nav">
+                <li class="sidebar-nav-link">
+                    <a href="../../index.html" class="active">
+                        <i class="am-icon-home sidebar-nav-link-logo"></i> 首页
+                    </a>
+                </li>
+                <li class="sidebar-nav-link">
+                    <a href="javascript:;" class="sidebar-nav-sub-title">
+                        <i class="am-icon-cog sidebar-nav-link-logo"></i> 基础功能
+                        <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+                    </a>
+                    <ul class="sidebar-nav sidebar-nav-sub">
+                        <li class="sidebar-nav-link">
+                            <a href="../base/measure.html">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 量测
+                            </a>
+                        </li>
+
+                        <li class="sidebar-nav-link">
+                            <a href="../base/roam.html">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 导航漫游
+                            </a>
+                        </li>
+
+                        <li class="sidebar-nav-link">
+                            <a href="../base/mv.html">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 视频融合
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="sidebar-nav-link">
+                    <a href="javascript:;" class="sidebar-nav-sub-title active">
+                        <i class="am-icon-list sidebar-nav-link-logo"></i> 违建识别
+                        <span
+                            class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico sidebar-nav-sub-ico-rotate"></span>
+                    </a>
+                    <ul class="sidebar-nav sidebar-nav-sub" style="display: block;">
+                        <li class="sidebar-nav-link">
+                            <a href="../core/inquiry.html" class="sub-active">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 单体化查询
+                            </a>
+                        </li>
+
+                        <li class="sidebar-nav-link">
+                            <a href="../core/identify.html">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 违建查询
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="sidebar-nav-link">
+                    <a href="javascript:;" class="sidebar-nav-sub-title">
+                        <i class="am-icon-table sidebar-nav-link-logo"></i> 数据统计
+                        <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+                    </a>
+                    <ul class="sidebar-nav sidebar-nav-sub">
+                        <li class="sidebar-nav-link">
+                            <a href="../data/table.html">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 违建信息
+                            </a>
+                        </li>
+
+                        <li class="sidebar-nav-link">
+                            <a href="../data/echarts.html">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 园区统计
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+
+
+        <!-- 内容区域 -->
+        <div class="tpl-content-wrapper">
+            <div id="cesiumContainer">
+            </div>
+            <script>
+                new Vue({
+                    el: '#cesiumContainer',
+                    data: {
+
+                    },
+                    mounted: function () {
+                        this.show();
+                    },
+                    methods: {
+                        show: function () {
+                            Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI4ZmUyZmJmZi1iZWU4LTRkOWQtYTNmZC0wYjM4Y2M3ZDI1NWQiLCJpZCI6OTIwODcsImlhdCI6MTY1MTU2MjU4MX0.wdOBNwCmbPdvCv7OQX-r329tiH77TCM9OissXrnWQjk';
+                            const viewer = new Cesium.Viewer('cesiumContainer', {
+                                terrainProvider: Cesium.createWorldTerrain(),
+                                animation: false,  //动画控制不显示     
+                                timeline: false,    //时间线不显示
+                                fullscreenButton: false, //全屏按钮不显示
+                            });
+                            const tileset = new Cesium.Cesium3DTileset({
+                                url: "http://172.30.60.101/b3dm/BGY/tileset.json", //数据路径
+                                maximumScreenSpaceError: 200, //最大的屏幕空间误差
+                                maximumNumberOfLoadedTiles: 10000, //最大加载瓦片个数
+                            });
+                            const shp = Cesium.GeoJsonDataSource.load('http://172.30.63.2/assets/test3.json', {
+                                fill: Cesium.Color.PINK.withAlpha(0.5),
+                                clampToGround: true
+                            });
+                            viewer.scene.primitives.add(tileset);
+                            viewer.dataSources.add(shp);
+                            viewer.camera.flyTo({
+                                destination: new Cesium.Cartesian3.fromDegrees(113.0804355, 28.2697861, 150),
+                                orientation: {
+                                    heading: Cesium.Math.toRadians(5.0),
+                                    pitch: Cesium.Math.toRadians(-25.0), //从上往下看为-90
+                                    roll: 0,
+                                }
+                            });
+                        }
+                    }
+                })
+            </script>
+        </div>
+    </div>
+
+    </div>
+    <script src="../../assets/js/amazeui.min.js"></script>
+    <script src="../../assets/js/amazeui.datatables.min.js"></script>
+    <script src="../../assets/js/dataTables.responsive.min.js"></script>
+    <script src="../../assets/js/app.js"></script>
+</body>
+
+</html>

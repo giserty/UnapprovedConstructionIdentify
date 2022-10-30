@@ -1,0 +1,464 @@
+<!--
+	THIS EXAMPLE WAS DOWNLOADED FROM https://echarts.apache.org/examples/zh/editor.html?c=bar-gradient
+-->
+<!DOCTYPE html>
+<html lang="zh-CN" style="height: 100%">
+
+<head>
+  <title>统计面板</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="这是一个 index 页面">
+  <meta name="keywords" content="index">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <link rel="icon" type="image/png" href="../../assets/i/favicon.png">
+  <link rel="apple-touch-icon-precomposed" href="../../assets/i/app-icon72x72@2x.png">
+  <meta name="apple-mobile-web-app-title" content="Amaze-Cesium" />
+  <script src="../../assets/js/echarts.min.js"></script>
+  <link rel="stylesheet" href="../../assets/css/amazeui.min.css" />
+  <link rel="stylesheet" href="../../assets/css/amazeui.datatables.min.css" />
+  <link rel="stylesheet" href="../../assets/css/app.css">
+  <script src="../../assets/js/jquery.min.js"></script>
+  <script src="../../assets/vue.min.js"></script>
+  <link rel="stylesheet" href="../../assets/XbsjCesium/Widgets/widgets.css">
+  <script src="../../assets/XbsjEarth/XbsjEarth.js"></script>
+  <script src="../../assets/XbsjCesium/Cesium.js"></script>
+  <style>
+    .tpl-content-wrapper {
+      background-color: white;
+    }
+  </style>
+</head>
+
+<body data-type="widgets">
+  <script src="../../assets/js/theme.js"></script>
+  <div class="am-g tpl-g">
+    <!-- 头部 -->
+    <header>
+      <!-- logo -->
+      <div class="am-fl tpl-header-logo">
+        <a href="javascript:;"><img src="../../assets/img/logo.png" alt=""></a>
+      </div>
+      <!-- 右侧内容 -->
+      <div class="tpl-header-fluid">
+        <!-- 侧边切换 -->
+        <div class="am-fl tpl-header-switch-button am-icon-list">
+          <span>
+
+          </span>
+        </div>
+      </div>
+    </header>
+    <!-- 风格切换 -->
+    <div class="tpl-skiner">
+      <div class="tpl-skiner-toggle am-icon-cog">
+      </div>
+      <div class="tpl-skiner-content">
+        <div class="tpl-skiner-content-title">
+          选择主题
+        </div>
+        <div class="tpl-skiner-content-bar">
+          <span class="skiner-color skiner-white" data-color="theme-white"></span>
+          <span class="skiner-color skiner-black" data-color="theme-black"></span>
+        </div>
+      </div>
+    </div>
+    <!-- 侧边导航栏 -->
+    <div class="left-sidebar">
+      <!-- 菜单 -->
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-link">
+          <a href="../../index.html" class="active">
+            <i class="am-icon-home sidebar-nav-link-logo"></i> 首页
+          </a>
+        </li>
+        <li class="sidebar-nav-link">
+          <a href="javascript:;" class="sidebar-nav-sub-title">
+            <i class="am-icon-cog sidebar-nav-link-logo"></i> 基础功能
+            <span
+              class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico sidebar-nav-sub-ico-rotate"></span>
+          </a>
+          <ul class="sidebar-nav sidebar-nav-sub">
+            <li class="sidebar-nav-link">
+              <a href="../base/measure.html">
+                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 量测
+              </a>
+            </li>
+
+            <li class="sidebar-nav-link">
+              <a href="../base/roam.html">
+                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 导航漫游
+              </a>
+            </li>
+
+            <li class="sidebar-nav-link">
+              <a href="../base/mv.html">
+                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 视频融合
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="sidebar-nav-link">
+          <a href="javascript:;" class="sidebar-nav-sub-title">
+            <i class="am-icon-list sidebar-nav-link-logo"></i> 违建识别
+            <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+          </a>
+          <ul class="sidebar-nav sidebar-nav-sub">
+            <li class="sidebar-nav-link">
+              <a href="../../pages/core/inquiry.html">
+                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 单体化查询
+              </a>
+            </li>
+
+            <li class="sidebar-nav-link">
+              <a href="../../pages/core/identify.html">
+                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 违建查询
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="sidebar-nav-link">
+          <a href="javascript:;" class="sidebar-nav-sub-title active">
+            <i class="am-icon-table sidebar-nav-link-logo"></i> 数据统计
+            <span
+              class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico sidebar-nav-sub-ico-rotate"></span>
+          </a>
+          <ul class="sidebar-nav sidebar-nav-sub" style="display: block;">
+            <li class="sidebar-nav-link">
+              <a href="../data/table.html">
+                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 违建信息
+              </a>
+            </li>
+
+            <li class="sidebar-nav-link">
+              <a href="../data/echarts.html" class="sub-active">
+                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 园区统计
+              </a>
+            </li>
+          </ul>
+        </li>
+
+      </ul>
+    </div>
+
+    <!-- 内容区域 -->
+    <div class="tpl-content-wrapper">
+      <div>
+        <div id="bar" style="position:absolute;left: 5px;top: 5px;width: 50%;height:50%"></div>
+        <div id="bingtu" style="position:absolute;right: 5px;top: 5px;width: 50%;height:100%"></div>
+        <div id="bar2" style="position:absolute;left: 5px;bottom: 5px;width: 50%;height:50%"></div>
+      </div>
+      <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.3.2/dist/echarts.min.js"></script>
+
+      <script type="text/javascript">
+        var bar = echarts.init(document.getElementById('bar'));
+        var app = {};
+        //柱状图<各楼区违规统计建筑数量>
+        let dataAxis = ['1区', '2区', '3区', '4区', '5区', '6区', '7区', '8区', '9区', '10区'];
+        // prettier-ignore
+        let data = [6, 1, 2, 3, 4, 1, 0, 3, 1, 4];
+        let yMax = 500;
+        let dataShadow = [];
+        for (let i = 0; i < data.length; i++) {
+          dataShadow.push(yMax);
+        }
+        option_bar = {
+          grid: [
+            { x: '7%', y: '7%' },//柱状图位置控制
+          ],
+          title: {
+            left: '30%',
+            text: '各楼区违规统计建筑数量',
+          },
+          xAxis: {
+            data: dataAxis,
+            axisLabel: {
+              inside: true,
+              color: '#fff'
+            },
+            axisTick: {
+              show: false
+            },
+            axisLine: {
+              show: false
+            },
+            z: 10
+          },
+          yAxis: {
+            axisLine: {
+              show: false
+            },
+            axisTick: {
+              show: false
+            },
+            axisLabel: {
+              color: '#999'
+            }
+          },
+          dataZoom: [
+            {
+              type: 'inside'
+            }
+          ],
+          series: [
+            {
+              type: 'bar',
+              showBackground: true,
+              itemStyle: {
+                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                  { offset: 0, color: '#83bff6' },
+                  { offset: 0.5, color: '#188df0' },
+                  { offset: 1, color: '#188df0' }
+                ])
+              },
+              emphasis: {
+                itemStyle: {
+                  color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                    { offset: 0, color: '#2378f7' },
+                    { offset: 0.7, color: '#2378f7' },
+                    { offset: 1, color: '#83bff6' }
+                  ])
+                }
+              },
+              data: data
+            }
+          ]
+        };
+        // Enable data zoom when user click bar.
+        const zoomSize = 10;
+        bar.on('click', function (params) {
+          console.log(dataAxis[Math.max(params.dataIndex - zoomSize / 2, 0)]);
+          bar.dispatchAction({
+            type: 'dataZoom',
+            startValue: dataAxis[Math.max(params.dataIndex - zoomSize / 2, 0)],
+            endValue:
+              dataAxis[Math.min(params.dataIndex + zoomSize / 2, data.length - 1)]
+          });
+        });
+
+        if (option_bar && typeof option_bar === 'object') {
+          bar.setOption(option_bar);
+        }
+        window.addEventListener('resize', bar.resize);
+
+        //各年违建占比饼图
+        var bingtu = echarts.init(document.getElementById('bingtu'));
+
+
+        setTimeout(function () {
+          option_bingtu = {
+            legend: {},
+            title: {
+              right: '30%',
+              bottom: "48%",
+              text: '各年份各区总违规建筑数量占比图',
+            },
+            tooltip: {
+              trigger: 'axis',
+              showContent: false
+            },
+            dataset: {
+              source: [
+                ['product', '2016', '2017', '2018', '2019', '2020', '2021'],
+                ['1区', 56, 82, 88, 70, 53, 85],
+                ['2区', 51, 51, 55, 53, 73, 68],
+                ['3区', 40, 62, 69, 36, 45, 32],
+                ['4区', 25, 37, 41, 18, 33, 49]
+              ]
+            },
+            xAxis: { type: 'category' },
+            yAxis: { gridIndex: 0 },
+            grid: { top: '55%' },
+            series: [
+              {
+                type: 'line',
+                smooth: true,
+                seriesLayoutBy: 'row',
+                emphasis: { focus: 'series' }
+              },
+              {
+                type: 'line',
+                smooth: true,
+                seriesLayoutBy: 'row',
+                emphasis: { focus: 'series' }
+              },
+              {
+                type: 'line',
+                smooth: true,
+                seriesLayoutBy: 'row',
+                emphasis: { focus: 'series' }
+              },
+              {
+                type: 'line',
+                smooth: true,
+                seriesLayoutBy: 'row',
+                emphasis: { focus: 'series' }
+              },
+              {
+                type: 'pie',
+                id: 'pie',
+                radius: '30%',
+                center: ['50%', '25%'],
+                emphasis: {
+                  focus: 'self'
+                },
+                label: {
+                  formatter: '{b}: {@2016} ({d}%)'
+                },
+                encode: {
+                  itemName: 'product',
+                  value: '2016',
+                  tooltip: '2016'
+                }
+              }
+            ]
+          };
+          bingtu.on('updateAxisPointer', function (event) {
+            const xAxisInfo = event.axesInfo[0];
+            if (xAxisInfo) {
+              const dimension = xAxisInfo.value + 1;
+              bingtu.setOption({
+                series: {
+                  id: 'pie',
+                  label: {
+                    formatter: '{b}: {@[' + dimension + ']} ({d}%)'
+                  },
+                  encode: {
+                    value: dimension,
+                    tooltip: dimension
+                  }
+                }
+              });
+            }
+          });
+          bingtu.setOption(option_bingtu);
+        });
+
+        //if (option_bingtu && typeof option_bingtu === 'object') {
+        //   bingtu.setOption(option_bingtu);
+        //  }
+
+        if (setTimeout && typeof setTimeout === 'object') {
+          bingtu.setOption(setTimeout);
+        }
+
+
+        window.addEventListener('resize', bingtu.resize);
+
+        //违规统计面积柱形图
+        var bar2 = echarts.init(document.getElementById('bar2'));
+
+        option_bar2 = {
+          title: {
+            left: '30%',
+            bottom: "85%",
+            text: '各年份各区总违规面积堆积图',
+          },
+          tooltip: {
+
+            trigger: 'axis',
+            axisPointer: {
+              // Use axis to trigger tooltip
+              type: 'shadow' // 'shadow' as default; can also be 'line' or 'shadow'
+            }
+          },
+          legend: {
+            left: "30%",
+            bottom: "2%",
+          },
+          grid: {
+            left: '3%',
+            bottom: '10%',
+            containLabel: true
+          },
+          xAxis: {
+            type: 'value'
+          },
+          yAxis: {
+            type: 'category',
+            data: ['2015', '2016', '2017', '2018', '2019', '2020', '2021']
+          },
+          series: [
+            {
+              name: '1区',
+              type: 'bar',
+              stack: 'total',
+              label: {
+                show: true
+              },
+              emphasis: {
+                focus: 'series'
+              },
+              data: [320, 302, 301, 334, 390, 330, 320]
+            },
+            {
+              name: '2区',
+              type: 'bar',
+              stack: 'total',
+              label: {
+                show: true
+              },
+              emphasis: {
+                focus: 'series'
+              },
+              data: [120, 132, 101, 134, 90, 230, 210]
+            },
+            {
+              name: '3区',
+              type: 'bar',
+              stack: 'total',
+              label: {
+                show: true
+              },
+              emphasis: {
+                focus: 'series'
+              },
+              data: [220, 182, 191, 234, 290, 330, 310]
+            },
+            {
+              name: '4区',
+              type: 'bar',
+              stack: 'total',
+              label: {
+                show: true
+              },
+              emphasis: {
+                focus: 'series'
+              },
+              data: [150, 212, 201, 154, 190, 330, 410]
+            },
+            {
+              name: '5区',
+              type: 'bar',
+              stack: 'total',
+              label: {
+                show: true
+              },
+              emphasis: {
+                focus: 'series'
+              },
+              data: [820, 832, 901, 934, 1290, 1330, 1320]
+            }
+          ]
+        };
+
+        if (option_bar2 && typeof option_bar2 === 'object') {
+          bar2.setOption(option_bar2);
+        }
+
+        window.addEventListener('resize', option_bar2.resize);
+
+      </script>
+    </div>
+  </div>
+  <script src="../../assets/js/amazeui.min.js"></script>
+  <script src="../../assets/js/amazeui.datatables.min.js"></script>
+  <script src="../../assets/js/dataTables.responsive.min.js"></script>
+  <script src="../../assets/js/app.js"></script>
+</body>
+
+</html>
